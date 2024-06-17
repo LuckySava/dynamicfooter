@@ -2,8 +2,9 @@
 
 class FooterContentFetcher {
 	private $base_url;
-	private $transient_key = 'footer_content_transient_v1.1';
-	private $cache_expiration = WEEK_IN_SECONDS; // Cache expiration time (1 week)
+	private $transient_key = 'footer_content_transient_v1.2';
+//	private $cache_expiration = WEEK_IN_SECONDS; // Cache expiration time (1 week)
+	private $cache_expiration = 30;
 
 	public function __construct($base_url) {
 		$this->base_url = $base_url;
