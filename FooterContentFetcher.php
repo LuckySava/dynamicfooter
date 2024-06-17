@@ -13,6 +13,9 @@ class FooterContentFetcher {
 		// Construct the URL with dynamic parameters
 		$url = $this->base_url . urlencode($path);
 
+		// Log the constructed URL
+		error_log('Constructed URL: ' . $url);
+
 		// Generate a unique transient key based on the URL
 		$transient_key = $this->transient_key . md5($url);
 
