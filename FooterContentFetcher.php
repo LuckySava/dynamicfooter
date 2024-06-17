@@ -42,3 +42,4 @@ class FooterContentFetcher {
 		return '';
 	}
 }
+?>
