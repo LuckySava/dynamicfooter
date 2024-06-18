@@ -2,9 +2,9 @@
 
 class FooterContentFetcher {
 	private $base_url;
-	private $transient_key = 'footer_content_transient_v1.2';
+	private $transient_key = 'footer_content_transient_v1.1';
 //	private $cache_expiration = WEEK_IN_SECONDS; // Cache expiration time (1 week)
-	private $cache_expiration = 30;
+	private $cache_expiration = 60; // Cache expiration time (1 min)
 
 	public function __construct($base_url) {
 		$this->base_url = $base_url;
@@ -12,7 +12,10 @@ class FooterContentFetcher {
 
 	public function get_footer_content($path = '/') {
 		// Construct the URL with dynamic parameters
-		$url = $this->base_url . urlencode($path);
+		$url = $this->base_url;
+		if ($path !== '/') {
+			$url .= '?url=' . urlencode($path);
+		}
 
 		// Log the constructed URL
 		error_log('Constructed URL: ' . $url);
