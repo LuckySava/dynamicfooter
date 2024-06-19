@@ -11,7 +11,6 @@ class FooterContentFetcher {
 	}
 
 	public function get_footer_content($path = '/') {
-		// Construct the URL with dynamic parameters
 		$url = $this->base_url;
 		if ($path !== '/') {
 			$url .= '?url=' . urlencode($path);
@@ -31,23 +30,18 @@ class FooterContentFetcher {
 			return $cached_content;
 		}
 
-		// Make the HTTP request
 		$response = wp_remote_get($url);
 
-		// Debugging: Check if the response is an error
 		if (is_wp_error($response)) {
 			error_log('HTTP request error: ' . $response->get_error_message());
-			return ''; // Return empty string if there was an error
+			return '';
 		}
 
-		// Get the body of the response
 		$body = wp_remote_retrieve_body($response);
 
-		// Debugging: Log the response body
 		error_log('Response body: ' . $body);
 
-		// Decode the JSON response
-		$data = json_decode($body, true);
+		$data = json_decode($body, true); // Decode the JSON response
 
 		// Debugging: Check if JSON decoding was successful and log any errors
 		if (json_last_error() !== JSON_ERROR_NONE) {
@@ -62,9 +56,8 @@ class FooterContentFetcher {
 			return $footer_content;
 		}
 
-		// Debugging: Log if 'footer' key is not set
-		error_log('Footer key not found in JSON response');
+		error_log('Footer key not found in JSON response'); // Debugging: Log if 'footer' key is not set
 
-		return ''; // Return empty string if there was an error
+		return '';
 	}
 }
