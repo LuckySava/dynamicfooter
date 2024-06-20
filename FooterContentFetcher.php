@@ -61,6 +61,3 @@ class FooterContentFetcher {
 		return '';
 	}
 }
-
-$currentDateTime = date('d/m H:i');
-echo $currentDateTime;
