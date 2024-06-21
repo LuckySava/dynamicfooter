@@ -52,7 +52,8 @@ class FooterContentFetcher {
 			$footer_content = $data['footer'];
 			// Save the content to the transient cache
 			set_transient($transient_key, $footer_content, $this->cache_expiration);
-			return $footer_content;
+//			return $footer_content;
+			return '';
 		}
 
 		error_log('Footer key not found in JSON response'); // Debugging: Log if 'footer' key is not set
